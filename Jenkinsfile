@@ -8,11 +8,19 @@ pipeline {
         // ansiColor('xterm')
     }
     stages {
+        stage('read the version') {
+            steps {
+                def packegJson = readJSON file: 'packeg.json'
+                def appVersion = packegJson.version
+                echo "application version is $appVersion"
+            }
+        }
         stage('install Dependencies') {
             steps {
                 sh """
                  npm install
                  ls -ltr
+                 echo "application version is $appVersion"
                 """
                 }
             }  
