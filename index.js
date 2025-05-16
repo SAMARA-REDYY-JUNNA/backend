@@ -61,7 +61,7 @@ app.delete('/transaction',(req,res)=>{
             t=moment().unix()
             console.log("{ \"timestamp\" : %d, \"msg\" : \"Deleted All Expenses\" }", t);
             res.statusCode = 200;
-            res.json({message:"delete function execution finished done."})
+            res.json({message:"delete function execution finished."})
         })
     }catch (err){
         res.json({message: "Deleting all transactions may have failed.", error:err.message});
