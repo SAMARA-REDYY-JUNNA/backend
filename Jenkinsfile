@@ -45,9 +45,9 @@ pipeline {
                 }
                 steps {
                     script {
-                        withSonarQubeEnv('sonar')[
+                        withSonarQubeEnv('sonar'){
                             sh "${scannerHome}/bin/sonar-scanner"
-                        ]
+                        }
                     }
                 }
             }
