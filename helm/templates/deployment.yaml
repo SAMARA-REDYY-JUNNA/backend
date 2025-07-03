@@ -25,7 +25,8 @@ spec:
     spec:
       containers:
       - name: backend
-        imagePullPolicy: Always
+        imagePullPolicy: {{ .Values.image.pullPolicy | quote }}  # this is called placeholder
+
         image: 888121514691.dkr.ecr.us-east-1.amazonaws.com/expense-backend:{{ .Values.deployment.imageVersion }}
         envFrom:
         - configMapRef:
