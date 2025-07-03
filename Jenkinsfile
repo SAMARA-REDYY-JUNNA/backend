@@ -8,8 +8,13 @@ def configMap = [
     project: "expense"
 ]
 
-if (!env.BRANCH_NAME?.equalsIgnoreCase('main')) {
+def branch = env.BRANCH_NAME ?: ""
+
+echo "DEBUG: Branch Name = '${branch}'"
+
+if (!branch.toLowerCase().equals("main")) {
     pipelineDecission.decidePipeline(configMap)
 } else {
     echo "Proceed with CR or NON-PROD pipeline"
 }
+
